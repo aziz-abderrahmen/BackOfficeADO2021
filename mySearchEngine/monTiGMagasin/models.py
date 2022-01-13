@@ -33,26 +33,5 @@ class Transaction(models.Model):
         ordering = ('created',)
 
 
-class ProduitPoissons(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    tigID = models.IntegerField(default='-1')
-
-    class Meta:
-        ordering = ('tigID',)
-
-
-class ProduitCrustaces(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    tigID = models.IntegerField(default='-1')
-
-    class Meta:
-        ordering = ('tigID',)
-
-
-class ProduitCoquillages(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    tigID = models.IntegerField(default='-1')
-
-    class Meta:
-        ordering = ('tigID',)
+   
         
