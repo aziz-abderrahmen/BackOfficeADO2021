@@ -158,3 +158,17 @@ class getTransactionCategory(APIView):
             if (serializerProduct.data['category'] == idCategory):
                 res.append(transac)
         return Response(res)
+
+class ProductPutOnSale(APIView):
+    def get_object(self, tig_id):
+        try:
+            return InfoProduct.objects.get(tig_id=tig_id)
+        except InfoProduct.DoesNotExist:
+            raise Http404
+    def get(self, request, tig_id, newprice, format=None):
+        product = self.get_object(tig_id)
+        product.discount = newprice
+        product.sale = True
+        product.save()
+        serializer = InfoProductSerializer(product)
+        return Response(serializer.data)
