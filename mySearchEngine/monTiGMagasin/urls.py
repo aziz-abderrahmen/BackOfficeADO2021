@@ -1,5 +1,10 @@
 from django.urls import path
 from monTiGMagasin import views
+from django.urls import path, register_converter
+from . import converts
+
+register_converter(converts.FloatUrlParameterConverter, 'float')
+
 
 urlpatterns = [
     path('infoproducts/', views.InfoProductList.as_view()),
@@ -7,6 +12,7 @@ urlpatterns = [
     path('incrementStock/<int:tig_id>/<int:number>/', views.ProductIncrementStock.as_view()),
     path('decrementStock/<int:tig_id>/<int:number>/', views.ProductDecrementStock.as_view()),
     path('modifyDiscount/<int:tig_id>/<int:number>/', views.ProductModifyDiscount.as_view()),
+    path('putonsale/<int:tig_id>/<float:newprice>/', views.ProductPutOnSale.as_view()),
     path('poissons/', views.PoissonsproductList.as_view()),
     path('crustaces/', views.CrustacesproductList.as_view()),
     path('coquillages/', views.CoquillagesproductList.as_view()),
