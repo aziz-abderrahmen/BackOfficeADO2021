@@ -172,3 +172,16 @@ class ProductPutOnSale(APIView):
         product.save()
         serializer = InfoProductSerializer(product)
         return Response(serializer.data)
+
+class ProductRemoveSale(APIView):
+    def get_object(self, tig_id):
+        try:
+            return InfoProduct.objects.get(tig_id=tig_id)
+        except InfoProduct.DoesNotExist:
+            raise Http404
+    def get(self, request, tig_id, format=None):
+        product = self.get_object(tig_id)
+        product.sale = False
+        product.save()
+        serializer = InfoProductSerializer(product)
+        return Response(serializer.data)

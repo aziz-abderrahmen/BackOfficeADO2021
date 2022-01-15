@@ -13,6 +13,7 @@ urlpatterns = [
     path('decrementStock/<int:tig_id>/<int:number>/', views.ProductDecrementStock.as_view()),
     path('modifyDiscount/<int:tig_id>/<int:number>/', views.ProductModifyDiscount.as_view()),
     path('putonsale/<int:tig_id>/<float:newprice>/', views.ProductPutOnSale.as_view()),
+    path('removesale/<int:tig_id>/', views.ProductRemoveSale.as_view()),
     path('poissons/', views.PoissonsproductList.as_view()),
     path('crustaces/', views.CrustacesproductList.as_view()),
     path('coquillages/', views.CoquillagesproductList.as_view()),
