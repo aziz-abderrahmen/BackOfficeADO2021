@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'mytig.apps.MytigConfig',
+    'corsheaders',
 ###################
 #...TME2 starts...#
     'myImageBank.apps.MyimagebankConfig',
@@ -59,8 +60,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
-
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
+]
 ROOT_URLCONF = 'mySearchEngine.urls'
 
 TEMPLATES = [
