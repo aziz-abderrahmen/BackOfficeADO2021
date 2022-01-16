@@ -185,3 +185,10 @@ class ProductRemoveSale(APIView):
         product.save()
         serializer = InfoProductSerializer(product)
         return Response(serializer.data)
+
+class ProductsByCategory(APIView):
+    def get(self, request, category, format=None):
+        products = InfoProduct.objects.filter(category=category)
+        serializer = InfoProductSerializer(products, many=True)
+        return Response(serializer.data)
+
