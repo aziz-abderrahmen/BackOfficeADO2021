@@ -53,6 +53,7 @@ class ProductDecrementStock(APIView):
         productBefore = InfoProduct.objects.get(tig_id=tig_id)
         if productBefore.quantityInStock - number >= 0 :
             productBefore.quantityInStock = productBefore.quantityInStock - number
+            productBefore.nombre_produit_vendu += number
             productBefore.save()
         
         product = self.get_object(tig_id=tig_id)
@@ -82,22 +83,10 @@ class ProductModifyDiscount(APIView):
         product = self.get_object(tig_id=tig_id)
         serializer = InfoProductSerializer(product)
         return Response(serializer.data)
-class PoissonsproductList(APIView):
-    def get(self, request, format=None):
-        products = InfoProduct.objects.filter(category=0)
-        serializer = InfoProductSerializer(products, many=True)
-        return Response(serializer.data)
 
-class CrustacesproductList(APIView):
-    def get(self, request, format=None):
-        products = InfoProduct.objects.filter(category=2)
-        serializer = InfoProductSerializer(products, many=True)
-        return Response(serializer.data)
-
-
-class CoquillagesproductList(APIView):
-    def get(self, request, format=None):
-        products = InfoProduct.objects.filter(category=1)
+class getProductsByCategory(APIView):
+    def get(self,request,category,format=None):
+        products = InfoProduct.objects.filter(category=category)
         serializer = InfoProductSerializer(products, many=True)
         return Response(serializer.data)
 
