@@ -7,10 +7,9 @@ urlpatterns = [
     path('incrementStock/<int:tig_id>/<int:number>/', views.ProductIncrementStock.as_view()),
     path('decrementStock/<int:tig_id>/<int:number>/', views.ProductDecrementStock.as_view()),
     path('modifyDiscount/<int:tig_id>/<int:number>/', views.ProductModifyDiscount.as_view()),
-    path('poissons/', views.PoissonsproductList.as_view()),
-    path('crustaces/', views.CrustacesproductList.as_view()),
-    path('coquillages/', views.CoquillagesproductList.as_view()),
     path('ModifySellPrice/<int:tig_id>/<int:price>/', views.ModifierPrixVente.as_view()),
     path('transactions/', views.addTransaction.as_view()),
     path('transactions/<int:idCategory>/', views.getTransactionCategory.as_view()),
+    path('infoproducts/<int:category>/', views.getProductsByCategory.as_view()),
 ]
+

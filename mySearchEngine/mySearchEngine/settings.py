@@ -25,7 +25,7 @@ SECRET_KEY = 'f%t0&fy4df2@#z@@&2g&rcu=@g27=h90=zr#hwyxz5w*3s)w9i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'mytig.apps.MytigConfig',
+    'corsheaders',
 ###################
 #...TME2 starts...#
     'myImageBank.apps.MyimagebankConfig',
@@ -47,6 +48,8 @@ INSTALLED_APPS = [
 ###############################
 #...TME3 (controle1) starts...#
     'monTiGMagasin.apps.MontigmagasinConfig',
+   
+
 #...end of TME3 (controle1)...#
 ###############################
 ]
@@ -59,8 +62,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
-
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",
+]
 ROOT_URLCONF = 'mySearchEngine.urls'
 
 TEMPLATES = [
@@ -130,3 +137,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CORS_ORIGIN_ALLOW_ALL=True 
